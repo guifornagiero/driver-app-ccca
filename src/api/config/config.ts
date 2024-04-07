@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-export type Config = {
+export interface Config {
     db_user: string,
     db_password: string,
     db_host: string,
