@@ -8,8 +8,8 @@
 
 4. Acess **localhost:15432** to use Pgadmin4
 
-5. Pgadmin4 Email: **admin@admin.com**
-   Password: **postgres**
+5. Pgadmin4 Email: **admin@admin.com** <br>
+   Password: **postgres** <br>
 
 7. Server Connection: **postgres** <br>
    User: **postgres** <br>
