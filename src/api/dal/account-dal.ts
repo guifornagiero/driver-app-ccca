@@ -5,29 +5,27 @@ import crypto from "crypto";
 
 const create = async (account: SignupInputDTO) => {
     const connection = startConnection();
+    const id = crypto.randomUUID();
     try {
-        const id = crypto.randomUUID();
         await connection.query(`INSERT INTO cccat16.account
             (account_id, name, email, cpf, car_plate, is_passenger, is_driver) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
             [id, account.name, account.email, account.cpf, account.carPlate, account.isPassenger, account.isDriver]);
-        const output: SignupOutputDTO = { accountId: id };
-        return output;
-    } catch(error) {
-        console.log(error);
-        return { message: error };
+    } catch (error: any) {
+        console.error("Database error: ", error.message);
     } finally {
         endConnection(connection);
     }
+    const output: SignupOutputDTO = { accountId: id };
+    return output;
 };
 
 const getByEmail = async (email: string) => {
     const connection = startConnection();
     try {
-        const account: Account = await connection.query("SELECT * FROM cccat16.account WHERE email = $1", [email]);
+        const [account]: Account[] = await connection.query("SELECT * FROM cccat16.account WHERE email = $1", [email]);
         return account;
-    } catch(error) {
-        console.log(error);
-        return { message: error };
+    } catch (error: any) {
+        console.error("Database error: ", error.message);
     } finally {
         endConnection(connection);
     }
