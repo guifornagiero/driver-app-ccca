@@ -1,16 +1,7 @@
 import { SignupInputDTO } from "../api/models/dto/account-dto";
-import { validateCPF } from "./validate-cpf";
 
-export const validateFields = (account: SignupInputDTO) => {
-    return validateName(account.name) &&
-        validateEmail(account.email) &&
-        validateCarPlate(account.carPlate) &&
-        validateCPF(account.cpf) &&
-        validatePassengerOrDriver(account.isPassenger, account.isDriver);
-}
-
-const validateName = (name: string) => {
-    const regex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+export const validateName = (name: string) => {
+    const regex = /[a-zA-Z] [a-zA-Z]+/;
     return regex.test(name);
 };
 
@@ -19,11 +10,19 @@ export const validateEmail = (email: string) => {
     return regex.test(email);
 };
 
-const validateCarPlate = (carPlate: string) => {
+export const validateCarPlate = (carPlate: string) => {
     const regex = /[A-Z]{3}[0-9]{4}/;
     return regex.test(carPlate);
 };
 
-const validatePassengerOrDriver = (isPassenger: boolean, isDriver: boolean) => {
-    return isPassenger !== isDriver;
-};
+export const validateUserType = (account: SignupInputDTO) => 
+    account.isDriver !== account.isPassenger;
+
+export const invalidDriver = (account: SignupInputDTO) => 
+    account.isDriver && !validateCarPlate(account.carPlate);
+
+export const invalidPassenger = (account: SignupInputDTO) => 
+    account.isPassenger && !!account.carPlate && account.carPlate.length > 0;
+
+export const fixPlate = (account: SignupInputDTO) => 
+    account.carPlate = account.isDriver ? account.carPlate : '';
