@@ -8,8 +8,11 @@
 
 4. Acess **localhost:15432** to use Pgadmin4
 
-5. Connection: **postgres** <br>
+5. Pgadmin4 Email: **admin@admin.com** <br>
+   Password: **postgres** <br>
+
+7. Server Connection: **postgres** <br>
    User: **postgres** <br>
    Password: **postgres** <br>
 
-6. Run **create.sql** to create schema and table 'account'
+8. Run **create.sql** to create schema and table 'account'
