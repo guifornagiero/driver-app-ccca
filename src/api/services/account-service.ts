@@ -1,5 +1,5 @@
 import { SignupInputDTO } from "../models/dto/account-dto";
-import { fixPlate, invalidDriver, invalidPassenger, validateEmail, validateName, validateUserType } from "../../utils/validate-fields";
+import { fixUserTypeData, invalidDriver, invalidPassenger, validateEmail, validateName, validateUserType } from "../../utils/validate-fields";
 import { AccountDAL } from "../dal/account-dal";
 import { validateCPF } from "../../utils/validate-cpf";
 
@@ -11,7 +11,7 @@ const signup = async (account: SignupInputDTO) => {
     if (invalidDriver(account)) throw new Error('Invalid car plate for driver.');
     if (invalidPassenger(account)) throw new Error('A passenger does not have a car plate.');
     
-    fixPlate(account);
+    fixUserTypeData(account);
     
     if (!!await AccountDAL.getByEmail(account.email)) throw new Error('Email already exists on our database.');
     const id = await AccountDAL.create(account);
