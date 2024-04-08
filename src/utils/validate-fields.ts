@@ -14,7 +14,7 @@ const validateName = (name: string) => {
     return regex.test(name);
 };
 
-const validateEmail = (email: string) => {
+export const validateEmail = (email: string) => {
     const regex = /^(.+)@(.+)$/;
     return regex.test(email);
 };

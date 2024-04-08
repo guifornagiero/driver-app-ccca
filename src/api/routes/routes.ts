@@ -6,7 +6,7 @@ const router: Router = Router();
 //#region Account 
 
 router.post('/signup', AccountController.signup);
-router.get('/getAccount', AccountController.getAccount);
+router.get('/getAccountByEmail', AccountController.getAccountByEmail);
 
 //#endregion
 

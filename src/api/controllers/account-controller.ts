@@ -11,11 +11,12 @@ const signup = async (req: Request, res: Response) => {
     res.send(output);
 };
 
-const getAccount = async (req: Request, res: Response) => {
-    res.send('getAccount');
+const getAccountByEmail = async (req: Request, res: Response) => {
+    const email = await AccountService.getAccountByEmail(req.body.email as string);
+    res.send(email);
 };
 
 export const AccountController = {
     signup,
-    getAccount
+    getAccountByEmail
 };
