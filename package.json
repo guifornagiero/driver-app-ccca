@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon src/api/server.ts"
+    "dev": "npx nodemon src/api/server.ts",
+    "test": "npx jest"
   },
   "keywords": [],
   "author": "",
