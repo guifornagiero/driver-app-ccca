@@ -3,7 +3,7 @@ import { Config, getConfig } from "../src/api/config/config";
 
 const configuration: Config = getConfig();
 
-describe('Testes para a rota de signup', () => {
+describe('Testes para a CONTROLLER de Signup', () => {
     test('Deve criar uma conta para o passageiro', async () => {
         const input = {
             name: 'John Doe',
