@@ -31,7 +31,20 @@ const getByEmail = async (email: string) => {
     }
 }
 
+const getById = async (accountId: string) => {
+    const connection = startConnection();
+    try {
+        const [account]: Account[] = await connection.query("SELECT * FROM cccat16.account WHERE account_id = $1", [accountId]);
+        return account;
+    } catch (error: any) {
+        console.error("Database error: ", error.message);
+    } finally {
+        endConnection(connection);
+    }
+}
+
 export const AccountDAL = {
     create,
+    getById,
     getByEmail
 };

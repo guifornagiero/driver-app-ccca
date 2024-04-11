@@ -12,18 +12,19 @@ const signup = async (req: Request, res: Response) => {
     }
 };
 
-const getAccountByEmail = async (req: Request, res: Response) => {
+const getAccount = async (req: Request, res: Response) => {
+    const accountId: string = req.params.accountId;
     try {
-        const account = await AccountService.getAccountByEmail(req.body.email as string);
+        const account = await AccountService.getAccount(accountId);
         if (!account) throw new Error('Account not found.');
         res.send(account);
     } catch (error: any) {
         console.error("We found an error: ", error.message);
         return res.status(400).json({ error: error.message });
     }
-};
+}
 
 export const AccountController = {
     signup,
-    getAccountByEmail
+    getAccount
 };

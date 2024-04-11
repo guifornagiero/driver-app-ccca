@@ -10,21 +10,21 @@ const signup = async (account: SignupInputDTO) => {
     if (!validateUserType(account)) throw new Error('User cannot be driver and passenger.');
     if (invalidDriver(account)) throw new Error('Invalid car plate for driver.');
     if (invalidPassenger(account)) throw new Error('A passenger does not have a car plate.');
+    if (!!await AccountDAL.getByEmail(account.email)) throw new Error('Email already exists on our database.');
     
     fixUserTypeData(account);
     
-    if (!!await AccountDAL.getByEmail(account.email)) throw new Error('Email already exists on our database.');
     const id = await AccountDAL.create(account);
     return id;
 };
 
-const getAccountByEmail = async (email: string) => {
-    if (!validateEmail(email)) throw new Error('Invalid email format.');
-    const account = await AccountDAL.getByEmail(email);
+const getAccount = async (accountId: string) => {
+    if(!accountId) throw new Error('AccountId undefined.');
+    const account = await AccountDAL.getById(accountId);
     return account;
 }
 
 export const AccountService = {
     signup,
-    getAccountByEmail
+    getAccount
 };
