@@ -1,21 +1,19 @@
 import { endConnection, startConnection } from "../config/database";
 import { Account } from "../models/entity/account";
-import { SignupInputDTO, SignupOutputDTO } from "../models/dto/account-dto";
-import crypto from "crypto";
+import { SignupOutputDTO } from "../models/dto/account-dto";
 
-const create = async (account: SignupInputDTO) => {
+const create = async (account: Account) => {
     const connection = startConnection();
-    const id = crypto.randomUUID();
     try {
         await connection.query(`INSERT INTO cccat16.account
             (account_id, name, email, cpf, car_plate, is_passenger, is_driver) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-            [id, account.name, account.email, account.cpf, account.carPlate, account.isPassenger, account.isDriver]);
+            [account.id, account.name, account.email, account.cpf, account.carPlate, account.isPassenger, account.isDriver]);
     } catch (error: any) {
         console.error("Database error: ", error.message);
     } finally {
         endConnection(connection);
     }
-    const output: SignupOutputDTO = { accountId: id };
+    const output: SignupOutputDTO = { accountId: account.id };
     return output;
 };
 

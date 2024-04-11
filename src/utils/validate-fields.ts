@@ -23,9 +23,3 @@ export const invalidDriver = (account: SignupInputDTO) =>
 
 export const invalidPassenger = (account: SignupInputDTO) => 
     account.isPassenger && !!account.carPlate && account.carPlate.length > 0;
-
-export const fixUserTypeData = (account: SignupInputDTO) => {
-    account.carPlate = account.isDriver ? account.carPlate : '';
-    account.isDriver = !!account.isDriver;
-    account.isPassenger = !!account.isPassenger;
-};
