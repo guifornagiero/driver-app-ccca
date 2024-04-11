@@ -11,7 +11,7 @@ const signup = async (accountDTO: SignupInputDTO) => {
     if (!validateUserType(accountDTO)) throw new Error('User cannot be driver and passenger.');
     if (invalidDriver(accountDTO)) throw new Error('Invalid car plate for driver.');
     if (invalidPassenger(accountDTO)) throw new Error('A passenger does not have a car plate.');
-    if (!!await AccountDAL.getByEmail(accountDTO.email)) throw new Error('Email already exists on our database.');
+    if (await AccountDAL.getByEmail(accountDTO.email)) throw new Error('Email already exists on our database.');
 
     const account: Account = fromDTOintoAccount(accountDTO);
     const output = await AccountDAL.create(account);
