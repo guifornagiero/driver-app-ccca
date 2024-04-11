@@ -4,7 +4,7 @@ import { Config, getConfig } from "../src/api/config/config";
 const configuration: Config = getConfig();
 
 describe('Testes para a CONTROLLER de Signup', () => {
-    test('Deve criar uma conta para o passageiro', async () => {
+    test('Deve criar uma conta para o passageiro e buscar por ID', async () => {
         const input = {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,

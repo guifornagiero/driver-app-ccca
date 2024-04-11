@@ -2,7 +2,7 @@ import { SignupInputDTO } from "../src/api/models/dto/account-dto";
 import { AccountService } from "../src/api/services/account-service";
 
 describe('Testes para a SERVICE de Signup', () => {
-    test('Deve criar uma conta para o passageiro', async () => {
+    test('Deve criar uma conta para o passageiro e buscar por ID', async () => {
         const input: any = {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
