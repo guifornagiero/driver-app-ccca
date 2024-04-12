@@ -16,7 +16,6 @@ describe('Testes para a DAL de Signup', () => {
         await AccountDAL.create(account);
         const savedAccount: any = await AccountDAL.getById(account.id);
         if (savedAccount) {
-            console.log(savedAccount);
             expect(savedAccount.account_id).toBe(account.id);
             expect(savedAccount.name).toBe(account.name);
             expect(savedAccount.email).toBe(account.email);
@@ -37,7 +36,6 @@ describe('Testes para a DAL de Signup', () => {
         await AccountDAL.create(account);
         const savedAccount: any = await AccountDAL.getByEmail(account.email);
         if (savedAccount) {
-            console.log(savedAccount);
             expect(savedAccount.account_id).toBe(account.id);
             expect(savedAccount.name).toBe(account.name);
             expect(savedAccount.email).toBe(account.email);

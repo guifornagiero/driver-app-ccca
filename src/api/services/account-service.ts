@@ -14,8 +14,8 @@ const signup = async (accountDTO: SignupInputDTO) => {
     if (await AccountDAL.getByEmail(accountDTO.email)) throw new Error('Email already exists on our database.');
 
     const account: Account = fromDTOintoAccount(accountDTO);
-    const output = await AccountDAL.create(account);
-    return output;
+    await AccountDAL.create(account);
+    return { accountId: account.id };
 };
 
 const getAccount = async (accountId: string) => {

@@ -1,8 +1,7 @@
 import { endConnection, startConnection } from "../config/database";
 import { Account } from "../models/entity/account";
-import { SignupOutputDTO } from "../models/dto/account-dto";
 
-const create = async (account: Account) => {
+const create = async (account: Account): Promise<void> => {
     const connection = startConnection();
     try {
         await connection.query(`INSERT INTO cccat16.account
@@ -13,8 +12,6 @@ const create = async (account: Account) => {
     } finally {
         endConnection(connection);
     }
-    const output: SignupOutputDTO = { accountId: account.id };
-    return output;
 };
 
 const getByEmail = async (email: string) => {
