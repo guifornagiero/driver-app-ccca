@@ -2,7 +2,7 @@ import { SignupInputDTO } from "../dto/account-dto"
 import crypto from "crypto";
 
 export interface Account {
-    id: string
+    account_id: string
     name: string
     email: string
     cpf: string
@@ -13,7 +13,7 @@ export interface Account {
 
 export const fromDTOintoAccount = (accountDTO: SignupInputDTO): Account => {
     return {
-        id: crypto.randomUUID(),
+        account_id: crypto.randomUUID(),
         name: accountDTO.name,
         email: accountDTO.email,
         cpf: accountDTO.cpf,

@@ -15,12 +15,13 @@ const signup = async (accountDTO: SignupInputDTO) => {
 
     const account: Account = fromDTOintoAccount(accountDTO);
     await AccountDAL.create(account);
-    return { accountId: account.id };
+    return { accountId: account.account_id };
 };
 
 const getAccount = async (accountId: string) => {
     if(!accountId) throw new Error('AccountId undefined.');
     const account = await AccountDAL.getById(accountId);
+    if(!account) throw new Error('Account not found.');
     return account;
 }
 

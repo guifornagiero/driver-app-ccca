@@ -16,7 +16,6 @@ const getAccount = async (req: Request, res: Response) => {
     const accountId: string = req.params.accountId;
     try {
         const account = await AccountService.getAccount(accountId);
-        if (!account) throw new Error('Account not found.');
         res.send(account);
     } catch (error: any) {
         console.error("We found an error: ", error.message);
