@@ -5,7 +5,7 @@ import { Account } from '../src/api/models/entity/account';
 describe('Testes para a DAL de Signup', () => {
     test('Deve criar uma conta para o passageiro e buscar por ID', async () => {
         const account: Account = {
-            id: crypto.randomUUID(),
+            account_id: crypto.randomUUID(),
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
@@ -14,18 +14,16 @@ describe('Testes para a DAL de Signup', () => {
             carPlate: ''
         };
         await AccountDAL.create(account);
-        const savedAccount: any = await AccountDAL.getById(account.id);
-        if (savedAccount) {
-            expect(savedAccount.account_id).toBe(account.id);
-            expect(savedAccount.name).toBe(account.name);
-            expect(savedAccount.email).toBe(account.email);
-            expect(savedAccount.cpf).toBe(account.cpf);
-        }
+        const savedAccount = await AccountDAL.getById(account.account_id);
+        expect(savedAccount!.account_id).toBe(account.account_id);
+        expect(savedAccount!.name).toBe(account.name);
+        expect(savedAccount!.email).toBe(account.email);
+        expect(savedAccount!.cpf).toBe(account.cpf);
     })
 
     test('Deve criar uma conta para o passageiro e buscar por EMAIL', async () => {
         const account: Account = {
-            id: crypto.randomUUID(),
+            account_id: crypto.randomUUID(),
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
@@ -34,12 +32,10 @@ describe('Testes para a DAL de Signup', () => {
             carPlate: ''
         };
         await AccountDAL.create(account);
-        const savedAccount: any = await AccountDAL.getByEmail(account.email);
-        if (savedAccount) {
-            expect(savedAccount.account_id).toBe(account.id);
-            expect(savedAccount.name).toBe(account.name);
-            expect(savedAccount.email).toBe(account.email);
-            expect(savedAccount.cpf).toBe(account.cpf);
-        }
+        const savedAccount = await AccountDAL.getByEmail(account.email);
+        expect(savedAccount!.account_id).toBe(account.account_id);
+        expect(savedAccount!.name).toBe(account.name);
+        expect(savedAccount!.email).toBe(account.email);
+        expect(savedAccount!.cpf).toBe(account.cpf);
     })
 });
