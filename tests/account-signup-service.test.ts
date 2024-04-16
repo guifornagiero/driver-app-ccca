@@ -82,7 +82,7 @@ describe('Testes para a SERVICE de Signup', () => {
         expect(getAccountSpy.calledWith(responseSignup.accountId)).toBe(true);
       })
 
-      test.only('Deve criar uma conta para o passageiro e buscar por ID com MOCK', async () => {
+      test('Deve criar uma conta para o passageiro e buscar por ID com MOCK', async () => {
         const input: any = {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
