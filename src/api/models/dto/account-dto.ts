@@ -2,10 +2,10 @@ export interface SignupInputDTO {
     name: string
     email: string
     cpf: string
-    carPlate: string
+    car_plate: string
     password: string
-    isPassenger: boolean
-    isDriver: boolean
+    is_passenger: boolean
+    is_driver: boolean
 }
 
 export interface SignupOutputDTO {

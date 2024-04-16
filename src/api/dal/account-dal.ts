@@ -6,7 +6,7 @@ const create = async (account: Account): Promise<void> => {
     try {
         await connection.query(`INSERT INTO cccat16.account
             (account_id, name, email, cpf, car_plate, is_passenger, is_driver) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-            [account.account_id, account.name, account.email, account.cpf, account.carPlate, account.isPassenger, account.isDriver]);
+            [account.account_id, account.name, account.email, account.cpf, account.car_plate, account.is_passenger, account.is_driver]);
     } catch (error: any) {
         console.error("Database error: ", error.message);
     } finally {

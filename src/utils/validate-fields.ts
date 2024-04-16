@@ -16,10 +16,10 @@ export const validateCarPlate = (carPlate: string) => {
 };
 
 export const validateUserType = (account: SignupInputDTO) => 
-    account.isDriver !== account.isPassenger;
+    account.is_driver !== account.is_passenger;
 
 export const invalidDriver = (account: SignupInputDTO) => 
-    account.isDriver && !validateCarPlate(account.carPlate);
+    account.is_driver && !validateCarPlate(account.car_plate);
 
 export const invalidPassenger = (account: SignupInputDTO) => 
-    account.isPassenger && !!account.carPlate && account.carPlate.length > 0;
+    account.is_passenger && !!account.car_plate && account.car_plate.length > 0;

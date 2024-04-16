@@ -6,9 +6,9 @@ export interface Account {
     name: string
     email: string
     cpf: string
-    carPlate: string
-    isPassenger: boolean
-    isDriver: boolean
+    car_plate: string
+    is_passenger: boolean
+    is_driver: boolean
 }
 
 export const fromDTOintoAccount = (accountDTO: SignupInputDTO): Account => {
@@ -17,8 +17,8 @@ export const fromDTOintoAccount = (accountDTO: SignupInputDTO): Account => {
         name: accountDTO.name,
         email: accountDTO.email,
         cpf: accountDTO.cpf,
-        carPlate: accountDTO.isDriver ? accountDTO.carPlate : '',
-        isDriver: !!accountDTO.isDriver,
-        isPassenger: !!accountDTO.isPassenger
+        car_plate: accountDTO.is_driver ? accountDTO.car_plate : '',
+        is_driver: !!accountDTO.is_driver,
+        is_passenger: !!accountDTO.is_passenger
     }
 }

@@ -9,9 +9,9 @@ describe('Testes para a DAL de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true,
-            isDriver: false,
-            carPlate: ''
+            is_passenger: true,
+            is_driver: false,
+            car_plate: ''
         };
         await AccountDAL.create(account);
         const savedAccount = await AccountDAL.getById(account.account_id);
@@ -27,9 +27,9 @@ describe('Testes para a DAL de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true,
-            isDriver: false,
-            carPlate: ''
+            is_passenger: true,
+            is_driver: false,
+            car_plate: ''
         };
         await AccountDAL.create(account);
         const savedAccount = await AccountDAL.getByEmail(account.email);
