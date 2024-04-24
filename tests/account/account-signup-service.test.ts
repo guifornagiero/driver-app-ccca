@@ -1,7 +1,7 @@
-import { AccountService } from "../src/api/services/account-service";
+import { AccountService } from "../../src/api/services/account-service";
 import sinon from 'sinon';
 import crypto from 'crypto';
-import { AccountDAL } from "../src/api/dal/account-dal";
+import { AccountDAL } from "../../src/api/dal/account-dal";
 
 describe('Testes para a SERVICE de Signup', () => {
     test('Deve criar uma conta para o passageiro e buscar por ID', async () => {
@@ -9,7 +9,7 @@ describe('Testes para a SERVICE de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true
+            is_passenger: true
         };
         const responseSignup = await AccountService.signup(input);
         expect(responseSignup.accountId).toBeDefined();
@@ -21,13 +21,13 @@ describe('Testes para a SERVICE de Signup', () => {
         expect(responseGetAccount.cpf).toBe(input.cpf);
     })
 
-    test('Deve retornar um erro de isDriver e isPassenger iguais', async () => {
+    test('Deve retornar um erro de is_driver e is_passenger iguais', async () => {
         const input: any = {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 10)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true,
-            isDriver: true
+            is_passenger: true,
+            is_driver: true
         };
         try {
             await AccountService.signup(input);
@@ -42,7 +42,7 @@ describe('Testes para a SERVICE de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true
+            is_passenger: true
         };
         // Stub sobrescreve o retorno das funções signup e getAccount para os retornos que eu pré defini
         const signupStub = sinon.stub(AccountService, 'signup').resolves({ accountId: crypto.randomUUID() });
@@ -65,7 +65,7 @@ describe('Testes para a SERVICE de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true
+            is_passenger: true
         };
         // Spy se prepara para ficar de olho no comportamento da função getAccount
         const getAccountSpy = sinon.spy(AccountService, "getAccount");
@@ -87,7 +87,7 @@ describe('Testes para a SERVICE de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true
+            is_passenger: true
         };
         // Eu digo para o Mock o que eu espero que aconteça dentro da função
         const getAccountMock = sinon.mock(AccountDAL);

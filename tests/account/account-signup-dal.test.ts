@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import { AccountDAL } from '../src/api/dal/account-dal';
-import { Account } from '../src/api/models/entity/account';
+import { AccountDAL } from '../../src/api/dal/account-dal';
+import { Account } from '../../src/api/models/entity/account';
 
 describe('Testes para a DAL de Signup', () => {
     test('Deve criar uma conta para o passageiro e buscar por ID', async () => {

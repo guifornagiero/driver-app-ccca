@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Config, getConfig } from "../src/api/config/config";
+import { Config, getConfig } from "../../src/api/config/config";
 
 const configuration: Config = getConfig();
 
@@ -9,7 +9,7 @@ describe('Testes para a CONTROLLER de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 100)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true
+            is_passenger: true
         };
         const responseSignup = await axios.post(`http://localhost:${configuration.port}/signup`, input);
         expect(responseSignup.status).toBe(200);
@@ -30,9 +30,10 @@ describe('Testes para a CONTROLLER de Signup', () => {
             name: 'John Doe',
             email: `john.doe${Math.round(Math.random() * 10)}@gmail.com`,
             cpf: '87748248800',
-            isPassenger: true,
-            isDriver: true
+            is_passenger: true,
+            is_driver: true
         };
+
         try {
             await axios.post(`http://localhost:${configuration.port}/signup`,input);
             fail('O teste deveria ter lançado um erro.');

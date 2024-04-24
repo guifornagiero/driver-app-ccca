@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon src/api/server.ts",
-    "test": "npx jest"
+    "test": "npx jest",
+    "test-account": "npx jest tests/account",
+    "test-ride": "npx jest tests/ride"
   },
   "keywords": [],
   "author": "",
